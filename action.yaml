@@ -1,0 +1,42 @@
+name: 'Scan Repository'
+description: 'Scan Repository Using Threatrix Agent'
+inputs:
+  eid:
+    description: 'EntityID: from user profile'
+    required: true
+  oid:
+    description: 'OrganizationID from user profile'
+    required: true
+  server-url:
+    description: 'Threatrix API url'
+    required: true
+    default: 'https://app.threatrix.io'
+  api-token:
+    description: 'API Key: from user profile'
+    required: true
+  scm-token:
+    description: 'SCM authorization token'
+    required: true
+  app-name:
+    description: 'Project Name'
+    required: true
+  branch:
+    description: 'Current branch'
+    required: true
+runs:
+  using: 'docker'
+  image: 'docker://threatrix/threat-agent:latest'
+  args:
+    - '--app-name=${{ inputs.app-name }}'
+    - '--api-key=${{ inputs.api-token }}'
+    - '--server-url=${{ inputs.server-url }}'
+    - '--scm=GITHUB'
+    - '--lowmem'
+    - '--env=prod'
+    - '--verbose'
+    - '--eid=${{ inputs.eid }}'
+    - '--oid=${{ inputs.oid }}'
+    - '--branch=${{ inputs.branch }}'
+    - '--scm-auth-token=${{ inputs.scm-token }}'
+    - '--progress'
+    - '/github/workspace'
