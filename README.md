@@ -6,7 +6,7 @@ See example below.
 ```yaml
 jobs:
   scan-repository:
-    uses: threatrix/threat-agent-scan/.github/workflows/scan-repo-reusable.yaml@main
+    uses: threatrix/threat-agent-scan/.github/workflows/scan-repo-reusable.yaml@master
 ```
 
 ### Required parameters for action:
