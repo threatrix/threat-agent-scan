@@ -23,7 +23,7 @@ jobs:
         with:
           ref: ${{ github.ref }}
       - name: Run scan with threat-agent
-        uses: rmashchenko/threat-agent-scan@main
+        uses: threatrix/threat-agent-scan@main
         with:
           eid: ${{ inputs.eid }}
           oid: ${{ inputs.oid }}
