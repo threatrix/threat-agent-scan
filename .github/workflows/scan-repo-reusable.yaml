@@ -12,7 +12,7 @@ on:
         required: false
         type: string
         default: ${{ github.repository }}
-      trx-url:
+      trx-host:
         required: false
         type: string
         default: 'https://app.threatrix.io'
@@ -35,7 +35,7 @@ jobs:
         with:
           eid: ${{ inputs.eid }}
           oid: ${{ inputs.oid }}
-          server-url: ${{ inputs.trx-url }}
+          server-url: ${{ inputs.trx-host }}
           scm-token: ${{ secrets.TOKEN }}
           api-token: ${{ secrets.THREATRIX_SERVER_API_KEY }}
           app-name: ${{ inputs.app-name }}
