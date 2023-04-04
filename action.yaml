@@ -32,7 +32,6 @@ runs:
     - '--server-url=${{ inputs.server-url }}'
     - '--scm=GITHUB'
     - '--lowmem'
-    - '--env=prod'
     - '--verbose'
     - '--eid=${{ inputs.eid }}'
     - '--oid=${{ inputs.oid }}'
