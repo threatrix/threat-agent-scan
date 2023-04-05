@@ -23,5 +23,5 @@ jobs:
 * oid -  OrganizationID from user profile
 
 ### This workflow requires to setup following secrets:
-* TOKEN - GitHub toket for target repository
+* TOKEN - GitHub token for target repository
 * THREATRIX_SERVER_API_KEY - API Key: from user profile
