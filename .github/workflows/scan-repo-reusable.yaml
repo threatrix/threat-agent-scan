@@ -26,24 +26,10 @@ on:
       THREATRIX_OID:
         required: false
 jobs:
-
-      
   scan-repository:
     name: Scan repository
     runs-on: ubuntu-latest
     steps:
-      - name: EID and OID from secrets
-        if: inputs.eid == ''
-        run: echo 'EID and OID from secrets'
-        env:
-          TRX_EID: secrets.THREATRIX_EID
-          TRX_OID: secrets.THREATRIX_OID
-      - name: EID and OID from inputs
-        if: inputs.eid != ''
-        run: echo 'EID and OID from inputs'
-        env:
-          TRX_EID: inputs.eid
-          TRX_OID: inputs.oid
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
@@ -58,3 +44,7 @@ jobs:
           api-token: ${{ secrets.THREATRIX_SERVER_API_KEY }}
           app-name: ${{ inputs.app-name }}
           branch: ${{ github.ref_name }}
+    env:
+      TRX_EID: ${{ inputs.eid != '' && inputs.eid || secrets.THREATRIX_EID }}
+      TRX_OID: ${{ inputs.oid != '' && inputs.oid || secrets.THREATRIX_OID }}
+
