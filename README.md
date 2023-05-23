@@ -25,3 +25,7 @@ jobs:
 ### This workflow requires to setup following secrets:
 * TOKEN - GitHub token for target repository
 * THREATRIX_SERVER_API_KEY - API Key: from user profile
+
+Also, as an option, values for EID and OID can be passed as secrets.
+* THREATRIX_EID
+* THREATRIX_OID
