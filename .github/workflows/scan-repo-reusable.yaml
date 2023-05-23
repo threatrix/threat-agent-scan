@@ -3,10 +3,10 @@ on:
   workflow_call:
     inputs:
       eid:
-        required: true
+        required: false
         type: string
       oid:
-        required: true
+        required: false
         type: string
       app-name:
         required: false
@@ -21,11 +21,27 @@ on:
         required: true
       THREATRIX_SERVER_API_KEY:
         required: true
+      THREATRIX_EID:
+        required: false
+      THREATRIX_OID:
+        required: false
 jobs:
+
+      
   scan-repository:
     name: Scan repository
     runs-on: ubuntu-latest
     steps:
+      - name: EID and OID from secrets
+        if: inputs.eid == ''
+        env:
+          TRX_EID: secrets.THREATRIX_EID
+          TRX_OID: secrets.THREATRIX_OID
+      - name: EID and OID from inputs
+        if: inputs.eid != ''
+        env:
+          TRX_EID: inputs.eid
+          TRX_OID: inputs.oid
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
@@ -33,8 +49,8 @@ jobs:
       - name: Run scan with threat-agent
         uses: threatrix/threat-agent-scan@master
         with:
-          eid: ${{ inputs.eid }}
-          oid: ${{ inputs.oid }}
+          eid: ${{ TRX_EID }}
+          oid: ${{ TRX_OID }}
           server-url: ${{ inputs.trx-host }}
           scm-token: ${{ secrets.TOKEN }}
           api-token: ${{ secrets.THREATRIX_SERVER_API_KEY }}
