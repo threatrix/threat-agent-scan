@@ -1,4 +1,4 @@
-# Threat Agent GihHub Action
+# Threat Agent GitHub Action
 GitHub action for scan repository using threat-agent docker image. 
 Can be incorporated in GitHub workflow as a separate step or as a part of reusable workflow. 
 See example below.
