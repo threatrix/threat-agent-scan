@@ -45,6 +45,6 @@ jobs:
           app-name: ${{ inputs.app-name }}
           branch: ${{ github.ref_name }}
     env:
-      TRX_EID: ${{ inputs.eid != '' && inputs.eid || secrets.THREATRIX_EID }}
-      TRX_OID: ${{ inputs.oid != '' && inputs.oid || secrets.THREATRIX_OID }}
+      THREATRIX_EID: ${{ inputs.eid != '' && inputs.eid || secrets.THREATRIX_EID }}
+      THREATRIX_OID: ${{ inputs.oid != '' && inputs.oid || secrets.THREATRIX_OID }}
 
