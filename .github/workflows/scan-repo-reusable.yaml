@@ -37,14 +37,14 @@ jobs:
       - name: Run scan with threat-agent
         uses: threatrix/threat-agent-scan@master
         with:
-          eid: ${{ env.THREATRIX_EID }}
-          oid: ${{ env.THREATRIX_OID }}
+          eid: ${{ env.TRX_EID }}
+          oid: ${{ env.TRX_OID }}
           server-url: ${{ inputs.trx-host }}
           scm-token: ${{ secrets.TOKEN }}
           api-token: ${{ secrets.THREATRIX_SERVER_API_KEY }}
           app-name: ${{ inputs.app-name }}
           branch: ${{ github.ref_name }}
     env:
-      THREATRIX_EID: ${{ inputs.eid != '' && inputs.eid || secrets.THREATRIX_EID }}
-      THREATRIX_OID: ${{ inputs.oid != '' && inputs.oid || secrets.THREATRIX_OID }}
+      TRX_EID: ${{ inputs.eid != '' && inputs.eid || secrets.THREATRIX_EID }}
+      TRX_OID: ${{ inputs.oid != '' && inputs.oid || secrets.THREATRIX_OID }}
 
