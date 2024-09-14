@@ -7,6 +7,9 @@ inputs:
   oid:
     description: 'OrganizationID from user profile'
     required: true
+  scpid:
+    description: 'CodeCertify or AICertify project ID'
+    required: false
   server-url:
     description: 'Threatrix API url'
     required: true
@@ -23,6 +26,9 @@ inputs:
   branch:
     description: 'Current branch'
     required: true
+  pr-num:
+    description: 'Pull Request Number'
+    required: true
 runs:
   using: 'docker'
   image: 'docker://threatrix/threat-agent:latest'
@@ -35,7 +41,9 @@ runs:
     - '--verbose'
     - '--eid=${{ inputs.eid }}'
     - '--oid=${{ inputs.oid }}'
+    - '--scpId=${{ inputs.scpid }}'
     - '--branch=${{ inputs.branch }}'
+    - '--pr-num=${{ inputs.pr-num }}'
     - '--scm-auth-token=${{ inputs.scm-token }}'
     - '--progress'
     - '/github/workspace'
