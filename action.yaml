@@ -29,9 +29,6 @@ inputs:
   pr-num:
     description: 'Pull Request Number'
     required: true
-  tags:
-    description: 'Scan Tags'
-    required: false
 runs:
   using: 'docker'
   image: 'docker://threatrix/threat-agent:latest'
@@ -49,5 +46,4 @@ runs:
     - '--pr-num=${{ inputs.pr-num }}'
     - '--scm-auth-token=${{ inputs.scm-token }}'
     - '--progress'
-    - '--tags=${{ inputs.tags }}'
     - '/github/workspace'
