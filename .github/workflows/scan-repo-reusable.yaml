@@ -19,6 +19,9 @@ on:
         required: false
         type: string
         default: 'https://app.threatrix.io'
+      tags:
+        required: false
+        type: string
     secrets:
       TOKEN:
         required: true
