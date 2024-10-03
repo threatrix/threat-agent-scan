@@ -38,7 +38,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          ref: ${{ github.ref }}
+          ref: ${{ github.head_ref != '' && github.head_ref || github.ref_name }}
       - name: Run scan with threat-agent
         uses: threatrix/threat-agent-scan@master
         with:
@@ -49,6 +49,7 @@ jobs:
           scm-token: ${{ secrets.TOKEN }}
           api-token: ${{ secrets.THREATRIX_SERVER_API_KEY }}
           app-name: ${{ inputs.app-name }}
+          tags: ${{ inputs.tags }}
           branch: ${{ github.head_ref != '' && github.head_ref || github.ref_name }}
           pr-num: ${{ github.event.pull_request.number != '' && github.event.pull_request.number || 'UNDEFINED' }}
     env:
